@@ -76,7 +76,7 @@ sudo systemctl start mongod
 sudo systemctl status mongod
 ```
 
-## Включение авторизации и аунтефикации MongoDB.
+## Включение авторизации MongoDB.
 - Подключаемся к серверу MongoDB.
 ```bash
 sudo mongosh
@@ -89,7 +89,7 @@ show users
 db.createUser({ user: "root_mongodb", pwd: passwordPrompt(), roles: [ "root" ] })
 show users
 ```
-- Включаем авторизацию и аунтификацию на сервере MongoDB.
+- Включаем авторизацию на сервере MongoDB.
 ```bash
 sudo vim /etc/mongod.conf
 
@@ -102,7 +102,7 @@ sudo systemctl status mongod
 - Если сервер запустился без ошибок, то все сделано правильно.  
 - Если сервер упал с ошибкой, необходимо посмотреть **лог-файл**:/var/log/mongodb/mongod.log и проверить отступы в **конфиг-файле**:/etc/mongod.conf
 
-## Авторизация и аунтефикации на сервере MongoDB.
+## Авторизация на сервере MongoDB.
 ```bash
 sudo mongosh
 ```
