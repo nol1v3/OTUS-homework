@@ -111,7 +111,7 @@ use admin
 show users
 MongoServerError[Unauthorized]: Command usersInfo requires authentication
 ```
-- Из сообщения ошибки видно, что данная команда доступна только авторизованным пользователем.
+- Из сообщения видно, что данная команда доступна только авторизованным пользователем.
 ```
 db.auth( "root_mongodb", "root_mongodb" )
 { ok: 1 } # Авторизация прошла успешно
