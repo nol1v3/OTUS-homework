@@ -143,6 +143,28 @@ db.purchases.insertMany(transactions)
 ```
 db.purchases.find().limit(10)
 ```
+- Выполним запрос на поиск данных.
+```
+db.purchases.find({$and: [{store_name: 'edgards'}, {transaction_price: {$gte: 50}}]})
+[
+  {
+    _id: ObjectId('661706d193504b8010ef635f'),
+    transaction_number: '#20',
+    transaction: 'tx_20',
+    transaction_price: 97,
+    transaction_type: 'account',
+    store_name: 'edgards'
+  },
+  {
+    _id: ObjectId('661706d193504b8010ef6368'),
+    transaction_number: '#29',
+    transaction: 'tx_29',
+    transaction_price: 382,
+    transaction_type: 'credit card',
+    store_name: 'edgards'
+  },
+...
+```
 - Выполним обновление данных.
 ```
 db.purchases.find({transaction_number: '#0'})
