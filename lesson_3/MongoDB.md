@@ -1,8 +1,5 @@
-# Первичная настройка и установка сервера MongoDB (.tgz)
-**Установка будет выполнена из Tarball по руководству:** [MongoDB Tarball](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu-tarball/)
-
-Данный способ выбран из-за проблем, которые могут возникать из-за служб ИБ (Информационной Безопастности).  
-Например требований к проверке исходного кода или запрета подключения дополнительных репозиториев к серверу.
+# Первичная настройка и установка сервера MongoDB (.deb)
+Установка будет выполнена из *.deb пакетов по **руководству:** [MongoDB Ubuntu](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
 
 ## Первичная настройка параметров ОС для MongoDB.
 Согласно руководству необходимо выполнить выключение **больших страниц ОС:** [MongoDB THP](https://www.mongodb.com/docs/manual/tutorial/transparent-huge-pages/)
