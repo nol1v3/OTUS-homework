@@ -5,7 +5,7 @@
 Например требований к проверке исходного кода или запрета подключения дополнительных репозиториев к серверу.
 
 ## Первичная настройка параметров ОС для MongoDB.
-**Согласно руководству необходимо выполнить выключение больших страниц ОС:** [MongoDB THP](https://www.mongodb.com/docs/manual/tutorial/transparent-huge-pages/)
+Согласно руководству необходимо выполнить выключение **больших страниц ОС:** [MongoDB THP](https://www.mongodb.com/docs/manual/tutorial/transparent-huge-pages/)
 ```bash
 cat /sys/kernel/mm/transparent_hugepage/enabled
 always [madvise] never
@@ -16,7 +16,7 @@ sudo vim /etc/default/grub
 GRUB_CMDLINE_LINUX="transparent_hugepage=never"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-**Так же согласно руководству необходимо выставить лимиты ОС:** [MongoDB ulimit Settings](https://www.mongodb.com/docs/manual/reference/ulimit/)
+Так же согласно руководству необходимо выставить **лимиты ОС:** [MongoDB ulimit Settings](https://www.mongodb.com/docs/manual/reference/ulimit/)
 ```bash
 sudo vim /etc/security/limits.conf
 
