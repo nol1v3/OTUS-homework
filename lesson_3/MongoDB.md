@@ -13,7 +13,7 @@ sudo vim /etc/default/grub
 GRUB_CMDLINE_LINUX="transparent_hugepage=never"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-Так же согласно руководству необходимо выставить **лимиты ОС:** [MongoDB ulimit Settings](https://www.mongodb.com/docs/manual/reference/ulimit/)
+Согласно руководству необходимо выставить **лимиты ОС:** [MongoDB ulimit Settings](https://www.mongodb.com/docs/manual/reference/ulimit/)
 ```bash
 sudo vim /etc/security/limits.conf
 
