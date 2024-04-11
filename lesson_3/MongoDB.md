@@ -100,7 +100,9 @@ sudo systemctl restart mongod
 sudo systemctl status mongod
 ```
 - Если сервер запустился без ошибок, то все сделано правильно.  
-- Если сервер упал с ошибкой, необходимо посмотреть **лог-файл**:/var/log/mongodb/mongod.log и проверить отступы в **конфиг-файле**:/etc/mongod.conf
+- Если сервер упал с ошибкой, необходимо посмотреть:
+  1. **Лог-файл:** /var/log/mongodb/mongod.log.
+  2. Проверить отступы в **конфиг-файле:** /etc/mongod.conf
 
 ## Авторизация на сервере MongoDB.
 ```bash
@@ -209,8 +211,8 @@ db.purchases.insertOne({transaction_number: '#100001', transaction: 'tx_100001',
   acknowledged: true,
   insertedId: ObjectId('66170b66da8a9eadfdef634b')
 }
-db.purchases.find({transaction_number: '#100001'})
 
+db.purchases.find({transaction_number: '#100001'})
 [
   {
     _id: ObjectId('66170b66da8a9eadfdef634b'),
@@ -228,8 +230,8 @@ cat /home/malyushin/1.js
 use test_transactions
 db.purchases.find({store_name: 'edgards'}).count()
 time mongosh -u root_mongodb -p root_mongodb --authenticationDatabase admin --quiet < 1.js
-real    0m1.697s
-user    0m1.760s
+real    0m0.897s
+user    0m0.960s
 sys     0m0.085s
 
 mongosh -u root_mongodb -p root_mongodb --authenticationDatabase admin
