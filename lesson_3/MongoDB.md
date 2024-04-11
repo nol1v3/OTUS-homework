@@ -229,7 +229,9 @@ db.purchases.find({transaction_number: '#100001'})
 cat /home/malyushin/1.js
 use test_transactions
 db.purchases.find({store_name: 'edgards'}).count()
+
 time mongosh -u root_mongodb -p root_mongodb --authenticationDatabase admin --quiet < 1.js
+16093
 real    0m0.897s
 user    0m0.960s
 sys     0m0.085s
@@ -242,6 +244,7 @@ db.purchases.createIndex({store_name: 1}, {name: "myIndex"});
 db.purchases.getIndexes()
 
 time mongosh -u root_mongodb -p root_mongodb --authenticationDatabase admin --quiet < 1.j
+16093
 real    0m0.653s
 user    0m0.685s
 sys     0m0.098s
