@@ -1,6 +1,6 @@
 # Первичная настройка и установка сервера MongoDB (.deb)
 Установка будет выполнена из *.deb пакетов по **руководству:** [MongoDB Ubuntu](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)  
-Установка выполнена через сервис: YandexCloud.
+Установка выполнена через **сервис:** YandexCloud.
 
 ## Первичная настройка параметров ОС для MongoDB.
 - Согласно руководству необходимо выполнить выключение **больших страниц ОС:** [MongoDB THP](https://www.mongodb.com/docs/manual/tutorial/transparent-huge-pages/)
