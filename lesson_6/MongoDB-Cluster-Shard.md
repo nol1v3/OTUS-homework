@@ -330,7 +330,6 @@ net.bindIpAll: true
 
 Раскомментировать секцию security и установить параметры
 security.keyFile: /var/lib/repsetkey/keyfile
-security.authorization: enabled
 
 sudo systemctl start mongos.service
 ```
