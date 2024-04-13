@@ -143,7 +143,7 @@ sudo systemctl stop mongod.service
 # Создаем папку для ключа шифрования
 sudo mkdir -p /var/lib/repsetkey
 # Меняем права на папку
-sudo chown mongod:mongod -R /var/lib/repsetkey/keyfile
+sudo chown mongodb:mongodb -R /var/lib/repsetkey
 ```
 
 > Создаем и копируем repsetkey между серверами MongoDB (общий ключ для всех Replica Set).
@@ -153,7 +153,7 @@ sudo chown mongod:mongod -R /var/lib/repsetkey/keyfile
 sudo openssl rand -base64 756 > /var/lib/repsetkey/keyfile
 # Меняем права и влладельца на ключ
 sudo chmod 400 /var/lib/repsetkey/keyfile
-sudo chown mongod:mongod -R /var/lib/repsetkey/keyfile
+sudo chown mongodb:mongodb -R /var/lib/repsetkey/keyfile
 # Передаем ключ шифрования на сервера
 sudo rsync -av /var/lib/repsetkey/keyfile root@{{_SERVER_NAME_on_rs{0..2}}}:/var/lib/repsetkey/keyfile
 # Запускаем MongoDB
