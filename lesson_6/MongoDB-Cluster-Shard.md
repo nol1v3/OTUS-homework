@@ -206,7 +206,7 @@ rsconf = {
 ... { _id: 2, host: "srv-ubu-mongodb-conf03:27017" }
 ... ]
 ... }
-# Для дата-серверов убрать: configsvr: true,
+# Для дата-серверов убрать: configsvr: true
 
 # Проверяем конфигурацию ReplicaSet
 printjson(rsconf)
