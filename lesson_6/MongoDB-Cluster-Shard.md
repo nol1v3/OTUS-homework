@@ -169,8 +169,12 @@ sudo systemctl start mongod
 
 ```bash
 # Подключаемся к MongoDB и проверям параметры запуска
-sudo mongosh 
-> db.serverCmdLineOpts()
+sudo mongosh
+
+db.auth( "root_mongodb", "root_mongodb" )
+{ ok: 1 }
+
+db.serverCmdLineOpts()
 
 # Меняем конфигурацию сервера MongoDB 
 sudo vim /etc/mongod.conf
@@ -182,10 +186,15 @@ replication.oplogSizeMB: 500
 sudo systemctl restart mongod.service 
 
 # Подключаемся к MongoDB и проверям параметры запуска
-sudo mongosh 
-> db.serverCmdLineOpts()
+sudo mongosh
+
+db.auth( "root_mongodb", "root_mongodb" )
+{ ok: 1 }
+
+db.serverCmdLineOpts()
 
 # Создаем конфигурацию Replica set
+use admin
 rsconf = {
 ... _id: "rs0",
 ... members: [
