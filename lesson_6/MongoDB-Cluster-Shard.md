@@ -331,7 +331,7 @@ net.bindIpAll: true
 Раскомментировать секцию security и установить параметры
 security.keyFile: /var/lib/repsetkey/keyfile
 
-sudo systemctl start mongos.service
+sudo mongos --config /etc/mongod.conf
 ```
 
 ## Добавление дата-серверов в шардирование.
