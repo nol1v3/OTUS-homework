@@ -59,9 +59,9 @@ vm.overcommit_ratio = 100
 | srv-ubu-mongodb-conf01    | srv-ubu-mongodb-data01    |
 | srv-ubu-mongodb-conf02    | srv-ubu-mongodb-data02    |
 | srv-ubu-mongodb-conf03    | srv-ubu-mongodb-data03    |
-|      -     | srv-ubu-mongodb-data04    |
-|      -     | srv-ubu-mongodb-data05    |
-|      -     | srv-ubu-mongodb-data06    |
+|| srv-ubu-mongodb-data04    |
+|| srv-ubu-mongodb-data05    |
+|| srv-ubu-mongodb-data06    |
 
 > Определяем версию сервера.
 ```bash
