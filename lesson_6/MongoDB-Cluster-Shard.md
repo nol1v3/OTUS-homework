@@ -55,7 +55,7 @@ vm.overcommit_ratio = 100
 ## <a id="title1">Установка сервера MongoDB (.deb)</a>
 
 | Конфиг-сервера (rs0) | Дата-сервера (rs1) | Дата-сервера (rs2) |
-| ----------- | ----------- |
+| ----------- | ----------- | ----------- |
 | srv-ubu-mongodb-conf01    | srv-ubu-mongodb-data01    | srv-ubu-mongodb-data04    |
 | srv-ubu-mongodb-conf02    | srv-ubu-mongodb-data02    | srv-ubu-mongodb-data05    |
 | srv-ubu-mongodb-conf03    | srv-ubu-mongodb-data03    | srv-ubu-mongodb-data06    |
