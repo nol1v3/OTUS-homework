@@ -216,10 +216,10 @@ rs.initiate(rsconf)
 { "ok" : 1 }
 
 # В консоли должно поменяться приглашение ввода
-# На PRIMARY
-rs0:PRIMARY>
 # На SECONDARY
-rs0:SECONDARY>
+rs0 [direct: secondary]>
+# На PRIMARY
+rs0 [direct: primary] >
 
 # Полная статистика статистика о Replica Set
 rs.config()
