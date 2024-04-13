@@ -54,14 +54,11 @@ vm.overcommit_ratio = 100
 
 ## <a id="title1">Установка сервера MongoDB (.deb)</a>
 
-| Конфиг-сервера | Дата-сервера |
+| Конфиг-сервера (rs0) | Дата-сервера (rs1) | Дата-сервера (rs2) |
 | ----------- | ----------- |
-| srv-ubu-mongodb-conf01    | srv-ubu-mongodb-data01    |
-| srv-ubu-mongodb-conf02    | srv-ubu-mongodb-data02    |
-| srv-ubu-mongodb-conf03    | srv-ubu-mongodb-data03    |
-|| srv-ubu-mongodb-data04    |
-|| srv-ubu-mongodb-data05    |
-|| srv-ubu-mongodb-data06    |
+| srv-ubu-mongodb-conf01    | srv-ubu-mongodb-data01    | srv-ubu-mongodb-data04    |
+| srv-ubu-mongodb-conf02    | srv-ubu-mongodb-data02    | srv-ubu-mongodb-data05    |
+| srv-ubu-mongodb-conf03    | srv-ubu-mongodb-data03    | srv-ubu-mongodb-data06    |
 
 > Определяем версию сервера.
 ```bash
@@ -230,3 +227,6 @@ rs0:SECONDARY>
 # Полная статистика статистика о Replica Set
 rs.config()
 ```
+
+> Шаги необходимо выполнить для **каждого сервера из списка (меняя только хосты по 3 сервера в каждом Replica set):**  
+[Установка сервера MongoDB (.deb)](#title1)
