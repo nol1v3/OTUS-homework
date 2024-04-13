@@ -60,6 +60,16 @@ vm.overcommit_ratio = 100
 | srv-ubu-mongodb-conf02    |
 | srv-ubu-mongodb-conf03    |
 
+
+| Дата-сервера |
+| ----------- |
+| srv-ubu-mongodb-data01    |
+| srv-ubu-mongodb-data02    |
+| srv-ubu-mongodb-data03    |
+| srv-ubu-mongodb-data04    |
+| srv-ubu-mongodb-data05    |
+| srv-ubu-mongodb-data06    |
+
 > Определяем версию сервера.
 ```bash
 cat /etc/lsb-release
@@ -200,7 +210,7 @@ db.auth( "root_mongodb", "root_mongodb" )
 
 db.serverCmdLineOpts()
 
-# Создаем конфигурацию Replica set
+# Создаем конфигурацию Replica set для конфиг серверов
 use admin
 rsconf = {
 ... _id: "rs0",
