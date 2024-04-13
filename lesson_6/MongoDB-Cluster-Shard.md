@@ -322,7 +322,7 @@ sudo apt-get install -y mongodb-org
 vim /etc/mongod.conf
 
 # Раскомментируем секцию sharding и устанавливаем параметры
-sharding.configDB: "srv-ubu-mongodb-conf01:27019,srv-ubu-mongodb-conf02:27019,srv-ubu-mongodb-conf03:27019"
+sharding.configDB: "srv-ubu-mongodb-conf01:27017,srv-ubu-mongodb-conf02:27017,srv-ubu-mongodb-conf03:27017"
 
 # Отвязываем сервер от localhost
 net.bindIpAll: true
