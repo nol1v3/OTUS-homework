@@ -231,9 +231,9 @@ rs.config()
 > Шаги необходимо выполнить для **каждого сервера из списка:**
 >> Изменения требуют параметры на данные из таблицы.
 ```
-_id: "rs0"
-_id: 0, host: "srv-ubu-mongodb-conf01:27017"
-_id: 1, host: "srv-ubu-mongodb-conf02:27017"
-_id: 2, host: "srv-ubu-mongodb-conf03:27017"
+_id: "rs0 - rs2"
+_id: 0, host: "srv-ubu-mongodb-conf/data{01..06}:27017"
+_id: 1, host: "srv-ubu-mongodb-conf/data{01..06}:27017"
+_id: 2, host: "srv-ubu-mongodb-conf/data{01..06}:27017"
 ```
 [Установка сервера MongoDB (.deb)](#title1)
