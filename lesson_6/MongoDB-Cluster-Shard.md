@@ -149,7 +149,7 @@ sudo chown mongod:mongod -R /var/lib/mongo/repsetkey/keyfile
 > Создаем и копируем repsetkey между серверами MongoDB.
 
 ```bash
-# Создаем ключ шифрования
+# Создаем ключ шифрования (3 ключа для каждого Replica set)
 sudo openssl rand -base64 756 > /var/lib/mongo/repsetkey/keyfile
 # Меняем права и влладельца на ключ
 sudo chmod 400 /var/lib/mongo/repsetkey/keyfile
