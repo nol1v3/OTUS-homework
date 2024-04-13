@@ -109,6 +109,12 @@ sudo vim /etc/mongod.conf
 # Раскомментировать секцию security и установить параметры
 security.authorization: enabled
 
+# Отвязываем сервер от localhost
+net.bindIpAll: true
+
+# Каждая база в отдельной директории
+storage.directoryPerDB: true
+
 sudo systemctl restart mongod
 sudo systemctl status mongod
 ```
@@ -178,6 +184,7 @@ db.serverCmdLineOpts()
 
 # Меняем конфигурацию сервера MongoDB 
 sudo vim /etc/mongod.conf
+
 # Раскомментируем секцию replication и устанавливаем параметры
 replication.replSetName: rs0
 replication.oplogSizeMB: 500
