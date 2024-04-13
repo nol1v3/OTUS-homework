@@ -155,7 +155,7 @@ sudo openssl rand -base64 756 > /var/lib/mongo/repsetkey/keyfile
 sudo chmod 400 /var/lib/mongo/repsetkey/keyfile
 sudo chown mongod:mongod -R /var/lib/mongo/repsetkey/keyfile
 # Передаем ключ шифрования на сервера
-sudo rsync -av /var/lib/mongo/repsetkey/keyfile root@{{_SERVER_NAME_}}:/var/lib/mongo/repsetkey/keyfile
+sudo rsync -av /var/lib/mongo/repsetkey/keyfile root@{{_SERVER_NAME_on_rs{0..2}}}:/var/lib/mongo/repsetkey/keyfile
 # Запускаем MongoDB
 sudo systemctl start mongod
 ```
