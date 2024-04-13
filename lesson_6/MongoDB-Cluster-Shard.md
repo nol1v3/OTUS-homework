@@ -195,11 +195,6 @@ sudo systemctl restart mongod.service
 # Подключаемся к MongoDB и проверям параметры запуска
 sudo mongosh
 
-db.auth( "root_mongodb", "root_mongodb" )
-{ ok: 1 }
-
-db.serverCmdLineOpts()
-
 # Создаем конфигурацию Replica set для конфиг серверов
 use admin
 rsconf = {
