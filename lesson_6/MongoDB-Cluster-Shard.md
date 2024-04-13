@@ -4,7 +4,7 @@
 >>> Установка кластера будет выполнена по **руководству**: [MongoDB Replica Set](https://www.mongodb.com/docs/manual/replication/)  
 >>>> Установка шардирования выполнена по **руководству**: [MongoDB Sharding](https://www.mongodb.com/docs/manual/sharding/)  
 
-## Настройка конфиг-серверов MongoDB.
+## Настройка серверов MongoDB.
 > Первичная настройка параметров ОС для MongoDB.   
 >> Согласно руководству необходимо выполнить выключение **больших страниц ОС:** [MongoDB THP](https://www.mongodb.com/docs/manual/tutorial/transparent-huge-pages/)
 ```bash
@@ -237,7 +237,10 @@ _id: 0, host: "srv-ubu-mongodb-conf/data{01..06}:27017"
 _id: 1, host: "srv-ubu-mongodb-conf/data{01..06}:27017"
 _id: 2, host: "srv-ubu-mongodb-conf/data{01..06}:27017"
 ```
-Преимущества Replica set:
+Плюсы Replica set:
 - при отказе мастер-сервера, происходит автоматический выбор нового мастер-сервера. (потеря данных не происходит)
 - при отказе мастер-сервера, происходит автоматический выбор нового мастер-сервера. (минимальный простой для приложения)
 - возможность организации read concern/write concern. (возможность балансировки нагрузки (на уровне подключения))
+
+Минусы Replica set:
+- Сложность в администрировании кластера.
