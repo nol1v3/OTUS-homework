@@ -199,13 +199,14 @@ sudo mongosh
 use admin
 rsconf = {
 ... _id: "rs0",
-... configsvr: true,
+... configsvr: true, 
 ... members: [
 ... { _id: 0, host: "srv-ubu-mongodb-conf01:27017" },
 ... { _id: 1, host: "srv-ubu-mongodb-conf02:27017" },
 ... { _id: 2, host: "srv-ubu-mongodb-conf03:27017" }
 ... ]
 ... }
+# Для дата-серверов убрать: configsvr: true,
 
 # Проверяем конфигурацию ReplicaSet
 printjson(rsconf)
