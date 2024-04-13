@@ -86,19 +86,15 @@ sudo apt-get install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl status mongod
 ```
-> Шаги необходимо выполнить для каждого сервера
+> Шаги необходимо выполнить для **каждого сервера из списка:**  
 [Установка сервера MongoDB (.deb)](#title1)
 
-
-
-
-
 ## Включение авторизации MongoDB.
-- Подключаемся к серверу MongoDB.
+> Подключаемся к серверу MongoDB.
 ```bash
 sudo mongosh
 ```
-- Создаем пользователя.
+> Создаем пользователя. Пользователя можно создать на одном сервере, т.к он будет реплицирован.
 ```
 use admin
 show roles
@@ -106,7 +102,7 @@ show users
 db.createUser({ user: "root_mongodb", pwd: passwordPrompt(), roles: [ "root" ] })
 show users
 ```
-- Включаем авторизацию на сервере MongoDB.
+> Включаем авторизацию на сервере MongoDB.
 ```bash
 sudo vim /etc/mongod.conf
 
@@ -116,24 +112,102 @@ security.authorization: enabled
 sudo systemctl restart mongod
 sudo systemctl status mongod
 ```
-- Если сервер запустился без ошибок, то все сделано правильно.  
-- Если сервер упал с ошибкой, необходимо посмотреть:
-  1. **Лог-файл:** /var/log/mongodb/mongod.log.
-  2. Проверить отступы в **конфиг-файле:** /etc/mongod.conf
+> Если сервер запустился без ошибок, то все сделано правильно.
 
-## Авторизация на сервере MongoDB.
+
+> Если сервер упал с ошибкой, необходимо посмотреть:
+>> Проверить отступы в **конфиг-файле:** /etc/mongod.conf  
+>> Проверить наличие ошибок в **лог-файл:** /var/log/mongodb/mongod.log 
+
+
+> Шаги необходимо выполнить для **каждого сервера из списка:**  
+[Установка сервера MongoDB (.deb)](#title1)
+
+## Подготовка кластера.
+> Для инициализации кластера с авторизацией необходимо выполнить шаги **по руководству**: [MongoDB Security Replica set](https://www.mongodb.com/docs/manual/tutorial/enable-authentication/#std-label-enable-access-control)
+
 ```bash
-sudo mongosh
-```
-```
-use admin
-show users
-MongoServerError[Unauthorized]: Command usersInfo requires authentication
-```
-- Из сообщения видно, что данная команда доступна только авторизованным пользователем.
-```
-db.auth( "root_mongodb", "root_mongodb" )
-{ ok: 1 } # Авторизация прошла успешно
-show users
+sudo vim /etc/mongod.conf
+
+# Раскомментировать секцию security и установить параметр
+security.keyFile: /var/lib/mongo/repsetkey/keyfile
+
+# Останавливаем сервис MongoDB 
+sudo systemctl stop mongod.service
+# Создаем папку для ключа шифрования
+sudo mkdir -p /var/lib/mongo/repsetkey
+# Меняем права на папку
+sudo chown mongod:mongod -R /var/lib/mongo/repsetkey/keyfile
 ```
 
+> Создаем и копируем repsetkey между серверами MongoDB.
+
+```bash
+# Создаем ключ шифрования
+sudo openssl rand -base64 756 > /var/lib/mongo/repsetkey/keyfile
+# Меняем права и влладельца на ключ
+sudo chmod 400 /var/lib/mongo/repsetkey/keyfile
+sudo chown mongod:mongod -R /var/lib/mongo/repsetkey/keyfile
+# Передаем ключ шифрования на сервера
+sudo rsync -av /var/lib/mongo/repsetkey/keyfile root@{{_SERVER_NAME_}}:/var/lib/mongo/repsetkey/keyfile
+# Запускаем MongoDB
+sudo systemctl start mongod
+```
+> Если сервер запустился без ошибок, то все сделано правильно.
+
+
+> Если сервер упал с ошибкой, необходимо посмотреть:
+>> Проверить отступы в **конфиг-файле:** /etc/mongod.conf  
+>> Проверить наличие ошибок в **лог-файл:** /var/log/mongodb/mongod.log  
+
+> Шаги необходимо выполнить для **каждого сервера из списка:**  
+[Установка сервера MongoDB (.deb)](#title1)
+
+## Инициализация кластера MongoDB
+
+> Инициализацию кластера необходимо проводить на отдельном сервере.
+
+```bash
+# Подключаемся к MongoDB и проверям параметры запуска
+sudo mongosh 
+> db.serverCmdLineOpts()
+
+# Меняем конфигурацию сервера MongoDB 
+sudo vim /etc/mongod.conf
+# Раскомментируем секцию replication и устанавливаем параметры
+replication.replSetName: rs0
+replication.oplogSizeMB: 500
+
+# Перезагружаем сервер MongoDB 
+sudo systemctl restart mongod.service 
+
+# Подключаемся к MongoDB и проверям параметры запуска
+sudo mongosh 
+> db.serverCmdLineOpts()
+
+# Создаем конфигурацию Replica set
+rsconf = {
+... _id: "rs0",
+... members: [
+... { _id: 0, host: "srv-ubu-mongodb-conf01:27017" },
+... { _id: 1, host: "srv-ubu-mongodb-conf02:27017" },
+... { _id: 2, host: "srv-ubu-mongodb-conf03:27017" }
+... ]
+... }
+
+# Проверяем конфигурацию ReplicaSet
+printjson(rsconf)
+
+# Инициализируем кластер MongoDB 
+rs.initiate(rsconf)
+{ "ok" : 1 }
+
+# В консоли должно поменяться приглашение ввода
+# На PRIMARY
+rs0:PRIMARY>
+# На SECONDARY
+rs0:SECONDARY>
+
+# Полная статистика статистика о Replica Set
+rs.config()
+```
