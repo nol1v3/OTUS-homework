@@ -380,6 +380,7 @@ for (var x = 0; x < 100000 ; x++) {
 db.purchases.insertMany(transactions)
 
 sh.status()
+db.printShardingStatus()
 db.purchases.getShardDistribution()
 ```
 - Сначала чанки сохраняются на primary шард, а затем мигрируют на второй шард, пока количество не выровняется, причем их диапазоны при этом тоже могут изменяться.
