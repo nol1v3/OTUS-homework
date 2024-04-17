@@ -195,6 +195,7 @@ sudo systemctl restart mongod.service
 
 # Подключаемся к MongoDB и проверям параметры запуска
 sudo mongosh
+db.auth( "root_mongodb", "root_mongodb" )
 
 # Создаем конфигурацию Replica set для конфиг серверов
 use admin
@@ -336,11 +337,12 @@ security.keyFile: /var/lib/repsetkey/keyfile
 sudo mongos --config /etc/mongod.conf
 ```
 
-## Добавление дата-серверов в шардирование.
+## Добавление дата-серверов в шардирование MongoDB.
 
 > Подключаемся к сервер-балансировщику mongos.
 ```bash
 mongosh --host srv-ubu-mongodb-mongos01 --port 27017
+db.auth( "root_mongodb", "root_mongodb" )
 sh.addShard("rs1/srv-ubu-mongodb-data01:27017,srv-ubu-mongodb-data02:27017,srv-ubu-mongodb-data03:27017")
 sh.addShard("rs2/srv-ubu-mongodb-data04:27017,srv-ubu-mongodb-data05:27017,srv-ubu-mongodb-data06:27017")
 sh.status()
@@ -350,7 +352,7 @@ sh.enableSharding("test_transactions")
 sh.status()
 ```
 
-## Проверяем распределение данных по шардам.
+## Проверяем распределение данных по шардам MongoDB.
 > Ключом шардирование выбираем поле transaction_price, так как оно может имеет множество значений.
 >> Так же создадим хешированный индекс по полю transaction_price, что позволит нам избежать многочисленных записей в последний чанк.
 ```
@@ -406,3 +408,31 @@ db.purchases.getShardDistribution()
 | 3   | 1   | 2    |
 | 4    | 1    | 3   |
 | 5    | 2   | 3   |
+
+## Ролевой доступ к MongoDB.
+> Базовые **роли MongoDB:** [Roles MongoDB](https://www.mongodb.com/docs/manual/reference/built-in-roles/)
+>> Создадим пользователя и назначим роль read-only (чтение данных). 
+```bash
+sudo mongosh --host srv-ubu-mongodb-mongos01 --port 27017
+use admin
+db.auth( "root_mongodb", "root_mongodb" )
+show roles
+db.createUser({ user: "test_user", pwd: passwordPrompt(), roles: [ "readAnyDatabase" ] })
+```
+> Предоставляет те же привилегии, что и read для всех баз данных, кроме local и config, плюс действие listDatabases в кластере как единое целое.
+>> MongoDB позволяет создавать собственные роли:
+```bash
+db.createRole({
+   createRole: "test-role",
+   privileges: [
+      { 
+         resource: { db: "test_transactions", collection: "" },
+         actions: [ "insert", "update", "createIndex", "createCollection" ] 
+      }
+   ],
+   roles: [{ role: "read", db: "test_transactions" }]
+});
+
+db.grantRolesToUser('test_user', ['test-role']);
+```
+> Создаем роль test-role с привилегиями: "insert", "update", "createIndex", "createCollection" и унаследованной ролью: "read".
