@@ -382,7 +382,8 @@ curl -d @/root/movies.db.dump.json -H "Content-type: application/json" -X POST h
 [{"ok":true,"id":"_design/sample","rev":"1-4b5394ab93ce1a821ec740a0ec950106"},{"ok":true,"id":"f96b64a80ecaffd8c12dbd4e4f004b74","rev":"1-55f2ec9c7c53fec192cdb16c9c4f50 c9"},{"ok":true,"id":"f96b64a80ecaffd8c12dbd4e4f0088d0","rev":"1-576d70babcd04fed2918f5c543bb7cf6"},{"ok":true,"id":"f96b64a80ecaffd8c12dbd4e4f00913b","rev":"1-cba8edd3 907e29925aac6ffdbcf921a5"},{"ok":true,"id":"f96b64a80ecaffd8c12dbd4e4f0097ad","rev":"1-b9481b94d092b1a65b64589492d2b49e"},{"ok":true,"id":"f96b64a80ecaffd8c12dbd4e4f00b f3f","rev":"1-d3ea1b5a4e6b014c10123f4e9f5fbad8"}]
 ```
 
-> Через web можно увидеть, что все база данных movies_restored реплецирована. Следовательно потеря сервера нам не угрожает, так как данные остануться на двух других.
+> Через web можно увидеть, что все база данных movies_restored реплецирована.
+>>Следовательно потеря сервера нам не угрожает, так как данные остануться на двух других.
 
 > http://158.160.131.243:5984/_utils/#/_all_dbs 
 
