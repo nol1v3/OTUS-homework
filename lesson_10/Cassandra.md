@@ -78,7 +78,7 @@ systemctl enable cassandra.service
 Ниже приведены параметры которые необходимо изменить для работы сервера.
 
 
-Остальные параметры оставить в базовых значениях.
+Остальные параметры оставить в базовых значениях. (Выполнить для всех 3 серверов listen_address/rpc_address задать соответствующий ip)
 ```bash
 vim /opt/cassandra/apache-cassandra-4.0.6/conf/cassandra.yaml
 
