@@ -345,7 +345,7 @@ CREATE DATABASE db1 ON CLUSTER test_cluster;
 ```
 > Создаем таблицу с помощью механизма таблиц MergeTree в кластере и вставляем данные.
 ```
-CREATE TABLE db1.table1 ON CLUSTER cluster_2S_1R
+CREATE TABLE db1.table1 ON CLUSTER test_cluster
 (
     `id` UInt64,
     `column1` String
