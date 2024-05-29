@@ -28,7 +28,7 @@ systemctl enable redis.service
 systemctl stop redis.service
 vi /etc/redis.conf
 
-bind 158.160.131.260 #Указать IP-адрес на свой на каждом сервере
+bind 158.160.131.260 #Указать свой IP-адрес на каждом сервере
 protected-mode no
 port 6379
 cluster-enabled yes
