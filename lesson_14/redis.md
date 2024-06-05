@@ -1,4 +1,4 @@
-# Настройка кластера Redis.
+# Установка и настройка кластера Redis.
 > Установка выполнена через **сервис:** YandexCloud.
 
 >> Установка будет выполнена из *.deb пакетов по **руководству:** [Redis Ubuntu](https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/linux/)
