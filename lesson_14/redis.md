@@ -159,4 +159,7 @@ r.set('test_json', test_data)
 ```
 
 >Сохранение json во всех структурах данных заняло примерно 10.5с (с учетом нагрузки на сеть). Получение JSON заняло 15.1 секунду.
->Для хранения JSON можно так же можно добавить модуль для нового типа данных JSON: https://github.com/RedisJSON/RedisJSON
+
+>Для хранения JSON можно так же можно добавить модуль для нового типа данных JSON: [RedisJSON](https://github.com/RedisJSON/RedisJSON)
+
+>Установка RedisJSON: [RedisJSON install](https://gist.github.com/lmj0011/820eea392f6f43c755fadc2ba56b69e9)
