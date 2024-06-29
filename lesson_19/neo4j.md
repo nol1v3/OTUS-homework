@@ -19,7 +19,7 @@
     group by  arrival_airport  , departure_airport
     ```
 
-* Сохраним все в папку [data](../neo4j/data)
+* Сохраним все в папку [data](../data)
 
 * Примонтируем файлы с выгруженными данными для импорта в Neo4j
 
