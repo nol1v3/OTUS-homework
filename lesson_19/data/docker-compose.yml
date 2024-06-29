@@ -1,0 +1,24 @@
+version: '3'
+services:
+  database:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - database.env # configure postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - /tmp:/sample
+
+
+  neo4j:
+    image: bitnami/neo4j:latest
+    ports:
+      - '7474:7474'
+      - '7473:7473'
+      - '7687:7687'
+    volumes:
+      - ./data:/bitnami/neo4j/import/data
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
