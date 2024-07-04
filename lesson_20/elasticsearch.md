@@ -11,7 +11,7 @@
    * «мама мыла раму»  
 * Написать запрос нечеткого поиска к этой коллекции документов ко ключу «мама ела сосиски»
 * Расшарить коллекцию postman (желательно сдавать в таком формате)
-* Прислать  [ссылку на коллекцию](../elasticsearch/ElasticSearch_test_collection.postman_collection.json)
+* Прислать  [ссылку на коллекцию](ElasticSearch_test_collection.postman_collection.json)
 
 ---
 
