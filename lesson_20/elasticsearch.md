@@ -94,7 +94,6 @@ curl -X POST "localhost:9200/api/saved_objects/index-pattern/simple_index*" \
 
 ``` json
 {"type":"index-pattern","id":"simple_index*","attributes":{"title":"simple_index*"},"references":[],"migrationVersion":{"index-pattern":"7.6.0"},"updated_at":"2020-10-31T17:28:30.228Z","version":"WzUzLDFd","namespaces":["default"]}
-'
 ```
 
 4. Наполняем данными
