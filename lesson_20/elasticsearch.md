@@ -71,7 +71,6 @@ curl -X PUT "localhost:9200/simple_index/_mapping?pretty" -H 'Content-Type: appl
     "text":  { "type": "text"}
   }
 }
-'
 ```
 ``` json
 {
