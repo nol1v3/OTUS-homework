@@ -90,7 +90,6 @@ curl -X POST "localhost:9200/api/saved_objects/index-pattern/simple_index*" \
     "title": "simple_index*"
   }
 }
-'
 ```
 
 
