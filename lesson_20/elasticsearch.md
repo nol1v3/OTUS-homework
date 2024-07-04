@@ -18,7 +18,7 @@
 
 ## Решение
 
-1. Создаем k8s кластер в docker
+1. Создаем ES в docker
 
 ``` sh
 docker pull elasticsearch:8.8.0
