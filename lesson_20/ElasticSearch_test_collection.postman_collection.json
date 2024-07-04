@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "cce03162-cf5e-4ef5-b236-82737ee18860",
+		"name": "ElasticSearch_test_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\":{}}\n{\t\"text\" : \"моя мама мыла посуду а кот жевал сосиски\"}\n{\"index\":{}}\n{\t\"text\" : \"рама была отмыта и вылизана котом\"}\n{\"index\":{}}\n{\t\"text\" : \"мама мыла раму\"}\n"
+				},
+				"url": {
+					"raw": "{{ES_URI}}/simple_index/_bulk",
+					"host": [
+						"{{ES_URI}}"
+					],
+					"path": [
+						"simple_index",
+						"_bulk"
+					]
+				},
+				"description": "1"
+			},
+			"response": []
+		},
+		{
+			"name": "get_fuz",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"fuzzy\": {\n      \"text\": {\n        \"value\": \"мама ела сосиски\",\n        \"fuzziness\": \"AUTO\",\n        \"max_expansions\": 50,\n        \"prefix_length\": 0\n      }\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{ES_URI}}/simple_index/_search",
+					"host": [
+						"{{ES_URI}}"
+					],
+					"path": [
+						"simple_index",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "71f70d7a-1caf-425f-9302-5d5ef8026c7e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ef35763f-eca2-4baf-a687-2e433291d654",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "bf24c990-d943-46a0-bde4-bb9d063a4ba4",
+			"key": "ES_URI",
+			"value": "http://elasticsearch.35.205.92.139.xip.io"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
