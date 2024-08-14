@@ -1,9 +1,5 @@
 # Урок 30 Nosql в Яндекс облаке 
 
-# Домашнее задание
-
-Облака
-
 ## Цель
 
 В результате выполнения ДЗ вы поработает с облаками.
@@ -121,8 +117,6 @@ clickhouse-client --host rc1b-rlc7qkuh7cgoq7fp.mdb.yandexcloud.net --secure --us
 ![image](https://github.com/ada04/NoSQL/assets/40420948/b323aea5-87c4-4438-99af-266758668230)
 
 ### Выполнляем загрузку данных и запросы
-
-[Взято из](https://github.com/ada04/NoSQL/edit/main/lesson09/readme.md)
 
 ![image](https://github.com/ada04/NoSQL/assets/40420948/caed9345-3553-4455-8b10-8cee08210c76)
 
