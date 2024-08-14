@@ -1,9 +1,5 @@
 # Урок 30 Nosql в Яндекс облаке 
 
-## Практика
-
-[практика](NoSQL_Yandex_cloud.md)
-
 # Домашнее задание
 
 Облака
@@ -88,6 +84,14 @@ sudo update-ca-certificates
     /usr/local/share/ca-certificates/Yandex/IntermediateCA.crt
 
 Используем для подключения ClickHouse® CLI, для этого укажем путь к SSL-сертификату RootCA.crt в конфигурационном файле, в элементе <caConfig>:
+
+clickhouse-client использует первый существующий файл из следующих или определяется в --config-file параметре:
+
+```
+./clickhouse-client.xml, .yaml,.yml
+~/.clickhouse-client/config.xml, .yaml,.yml
+/etc/clickhouse-client/config.xml, .yaml,.yml
+```
 
 ```
 <config>
